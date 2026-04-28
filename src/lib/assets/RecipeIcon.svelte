@@ -1,6 +1,6 @@
 <script>
     //properties set by parent
-    let { name, description, ingredients, cook_time, image_url} = $props();
+    let { name, description, ingredients, cook_time, image_url } = $props();
 </script>
 
 <div id="parent">
