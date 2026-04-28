@@ -1,5 +1,14 @@
 // @ts-nocheck
 export class Recipe {
+    name = $state("");
+
+    description = $state([]);
+
+    ingredients = $state([]);
+    cook_time = $state(0);
+
+    image_url = $state(0);
+
     constructor() {
         name: "";
 
@@ -9,7 +18,6 @@ export class Recipe {
         cook_time: 0;//minutes
 
         image_url: "";
-
     };
 };
 
