@@ -12,22 +12,10 @@ dist
 dist-ssr
 *.local
 
-<<<<<<< HEAD
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-=======
-# Output
-.output
-.vercel
-.netlify
-.wrangler
-/.svelte-kit
-/build
-
-# OS
->>>>>>> 1f9c784e6e86f867a1b2e86d22c74a138dd6b022
 .DS_Store
 *.suo
 *.ntvs*
