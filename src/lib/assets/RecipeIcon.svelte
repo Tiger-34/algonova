@@ -1,6 +1,6 @@
 <script>
     //properties set by parent
-    let { name, description, ingredients, cook_time, image_url } = $props();
+    let { id, name, description, ingredients, cook_time, image_url } = $props();
 
     let inner_ingredients = $derived.by(() => {
         if (ingredients.length > 3) {
