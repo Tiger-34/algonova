@@ -37,7 +37,7 @@
         <div id="info_divisor"></div>
 
         <div id="other_info">
-            <p id="cook_time">{cook_time} min.</p>
+            <p id="cook_time">{cook_time} min..</p>
         </div>
 
         <div id="editndelete_parent">
