@@ -19,6 +19,12 @@
                 </div>
             {/each}
         </div>
+
+        <div id="info_divisor"></div>
+
+        <div id="other_info">
+            <p id="cook_time">{cook_time} min.</p>
+        </div>
     </div>
 
 </div>
@@ -36,6 +42,10 @@
         flex-direction: column;
 
         overflow: hidden;
+
+        color: rgb(75, 75, 75);
+
+        font-size: small;
     }
 
     #image_div {
@@ -52,7 +62,7 @@
     }
 
     #ingredients {
-        width: 50%;
+        width: 48.5%;
     }
         .ingredient_info {
             display: flex;
@@ -61,6 +71,30 @@
             color: rgb(75, 75, 75);
 
             font-size: small;
+        }
+
+    #info_divisor {
+        width: 1px;
+        height: 70%;
+
+        margin: auto;
+
+        background-color: #909090;
+
+        opacity: 0.7;
+    }
+
+    #other_info {
+        width: 48.5%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+        #cook_time {
+            display: block;
+
+            text-align: center;
         }
 </style>
 
