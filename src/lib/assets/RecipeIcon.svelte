@@ -1,6 +1,14 @@
 <script>
     //properties set by parent
     let { name, description, ingredients, cook_time, image_url } = $props();
+
+    let inner_ingredients = $derived.by(() => {
+        if (ingredients.length > 3) {
+            return [ingredients[0],ingredients[1],ingredients[2]]
+        } else {
+            return ingredients
+        }
+    });
 </script>
 
 <div id="parent">
@@ -11,13 +19,19 @@
 
     <div id="overview">
         <div id="ingredients">
-            {#each ingredients as ingredient}
+            {#each inner_ingredients as ingredient}
                 <div class="ingredient_info">
                     <p>{ingredient[0]}</p>
                     <p>-</p>
                     <p>{ingredient[1]}</p>
                 </div>
             {/each}
+
+            {#if ingredients.length > 3}
+                <div>
+                    <p id="and_more_p">A {ingredients.length - 3} {(ingredients.length - 3 == 1 ? "ďalší":"ďalších")}...</p>
+                </div>
+            {/if}
         </div>
 
         <div id="info_divisor"></div>
@@ -71,6 +85,11 @@
             color: rgb(75, 75, 75);
 
             font-size: small;
+        }
+        #and_more_p {
+            font-style: italic;
+            text-align: center;
+            font-size: x-small;
         }
 
     #info_divisor {
