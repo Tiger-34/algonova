@@ -25,6 +25,7 @@ export class Recipe {
 
 export let recipes = $state({info: [
     {
+        id: 0,
         name: "Špaget",
         long_description: [["Nadpis 1","Text k nadpisu 1"],["Nadpis 2","Text k nadpisu 2"]],
         ingredients: [["Špaget","1ks"],["Paradajky","3ks"],["Soľ","1tsp"],["Korenie","nvm"]],
