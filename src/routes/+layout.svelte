@@ -1,6 +1,6 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
-	import Overlay from '../components/ui/overlay.svelte';
+	import Overlay from '../lib/assets/components/ui/overlay.svelte';
 	import {isOverlayOpen} from '../stores/overlay.js';
 	let { children } = $props();
 </script>

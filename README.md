@@ -1,42 +1,182 @@
-# sv
+```
+     _______________
+    /|             /|
+   / |    ALGONOVA / |
+  /  |   3D MODE  /  |
+ /____|___________/   |
+ |    |__________|____|
+ |   /|          |   /
+ |  / |          |  /
+ | /  |          | /
+ |/___|__________|/
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+```
 
-## Creating a project
+```
+    ╔═══════════════════════════════════════╗
+    ║                                       ║
+    ║   ▄████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀████▄   ║
+    ║  ▀█████████▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄█████▀  ║
+    ║   █████████  A L G O N O V A  █████   ║
+    ║   █████████  3D DEVELOPMENT   █████   ║
+    ║   █████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█████   ║
+    ║  ▄█████████▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█████▄  ║
+    ║   ▀████████▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄████▀   ║
+    ║                                       ║
+    ║      🎨 Powered by Svelte Kit 🎨     ║
+    ║                                       ║
+    ╚═══════════════════════════════════════╝
+```
 
-If you're seeing this, you've probably already done this step. Congrats!
+> Everything you need to build a blazing-fast Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+
+---
+
+## 🎯 Quick Start
+
+### Create a New Project
 
 ```sh
-# create a new project
 npx sv create my-app
 ```
 
-To recreate this project with the same configuration:
+**Already created?** Here's the exact configuration used for this project:
 
 ```sh
-# recreate this project
 npx sv@0.15.1 create --template minimal --types jsdoc --install npm ./
 ```
 
-## Developing
+---
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## ⚡ Development
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+    ┌─────────────────────────┐
+    │                         │
+    │  npm run dev            │
+   ╱ │ Start Development      │ ╲
+  ╱  │ Server                 │  ╲
+ │   │                         │   │
+ │   └─────────────────────────┘   │
+ │                                 │
+  ╲  ┌──────────────────────────┐ ╱
+  ╲  │ Auto-open in browser:    │╱
+   ╲ │ npm run dev -- --open    │
+    ╲│                          │
+     └──────────────────────────┘
 ```
 
-## Building
+Get your development environment running:
 
-To create a production version of your app:
+```sh
+npm install
+npm run dev
+```
+
+---
+
+## 🏗️ Building for Production
+
+```
+    ╔════════════════════════════╗
+    ║                            ║
+    ║  npm run build             ║
+    ║      ↓↓↓                   ║
+    ║  ┌──────────────┐          ║
+    ║  │ Production   │          ║
+    ║  │ Build Ready  │          ║
+    ║  └──────────────┘          ║
+    ║      ↓↓↓                   ║
+    ║  npm run preview           ║
+    ║                            ║
+    ╚════════════════════════════╝
+```
+
+Create an optimized production build:
 
 ```sh
 npm run build
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+---
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## 📦 Deployment
+
+```
+   Your App
+     ▄▄▄
+    █   █
+    █ 📦 █
+    █   █
+     ▀▀▀
+      ↓
+  ┌─────────┐
+  │ Deploy  │
+  │ Target  │
+  └─────────┘
+   ↙ ↓ ↘
+Vercel Netlify Node.js
+```
+
+> **Note:** To deploy your app to production, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+---
+
+## 🛠️ Tech Stack
+
+```
+    ╔═══════════════════════════╗
+    ║    TECH STACK (3D VIEW)   ║
+    ╠═══════════════════════════╣
+    ║  ▓▓▓ Svelte Kit           ║
+    ║  ▓▓▓ Tailwind CSS         ║
+    ║  ▓▓▓ JavaScript/JSDoc     ║
+    ║  ▓▓▓ Vite Build Tool      ║
+    ║  ▓▓▓ Bun Package Manager  ║
+    ╚═══════════════════════════╝
+```
+
+- **Framework:** [Svelte Kit](https://svelte.dev/docs/kit)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **Build Tool:** [Vite](https://vitejs.dev)
+- **Package Manager:** bun
+- **CLI:** [sv](https://github.com/sveltejs/cli)
+
+---
+
+## 📚 Resources
+
+```
+   _______________
+  /               \
+ /  DOCUMENTATION  \
+╱___________________╲
+│                   │
+│ Svelte Kit Docs   │
+│ Tailwind Docs     │
+│ Vite Docs         │
+│ Community Forums  │
+│                   │
+╲___________________╱
+```
+
+- [Svelte Documentation](https://svelte.dev/docs)
+- [SvelteKit Documentation](https://svelte.dev/docs/kit)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [Vite Guide](https://vitejs.dev)
+
+---
+
+<div align="center">
+
+```
+╔═══════════════════════════════╗
+║  Built with ❤️ using Svelte   ║
+║                               ║
+║      ★ 3D Ready ★             ║
+║  High Performance • Modern UI  ║
+╚═══════════════════════════════╝
+```
+
+</div>
