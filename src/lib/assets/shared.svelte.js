@@ -34,3 +34,5 @@ export let recipes = $state({info: [
     }
 ],
 current_id: 0});
+
+export let isOverlayOpen = $state({value: false});

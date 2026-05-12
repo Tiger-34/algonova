@@ -1,10 +1,22 @@
 <script>
-    import PopupBtn from '../lib/assets/components/ui/overlaybtn.svelte';
-    import Card from '../lib/assets/components/ui/card.svelte';
+    //@ts-nocheck
+    import RecipeIcon from "$lib/assets/RecipeIcon.svelte";
+
+    import Overlay from "$lib/assets/Overlay.svelte";
+    import Overlaybtn from "$lib/assets/OverlayBtn.svelte";
+
+    import { recipes } from "$lib/assets/shared.svelte";
+
+    import { isOverlayOpen } from "$lib/assets/shared.svelte";
+    import OverlayBtn from "$lib/assets/OverlayBtn.svelte";
 </script>
 
-<Card/>
-<PopupBtn/>
+{#each recipes.info as recipe}
+    <RecipeIcon {...recipe}/>
+{/each}
 
+<OverlayBtn />
 
-
+{#if isOverlayOpen.value}
+    <Overlay />
+{/if}
