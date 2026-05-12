@@ -19,5 +19,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"tailwind": "^4.0.0"
+	}
 }
