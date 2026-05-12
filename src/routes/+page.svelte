@@ -11,7 +11,7 @@
     import OverlayBtn from "$lib/assets/OverlayBtn.svelte";
 </script>
 
-{#each recipes.info as recipe}
+{#each recipes.info as recipe (recipe.id)}
     <RecipeIcon {...recipe}/>
 {/each}
 
