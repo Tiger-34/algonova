@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -11,12 +12,14 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
-    environment: github-pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,8 +29,6 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-          # Toto automaticky cachuje balíky z bun.lockb
-          cache: true 
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -35,14 +36,14 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Uisti sa, že tvoj build generuje súbory do 'dist' (toto je štandard pre Vite)
-          path: 'dist'
+          # Double-check this folder name! (e.g., Next.js uses ./out, Astro uses ./dist)
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         id: deployment
