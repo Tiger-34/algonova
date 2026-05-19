@@ -5,21 +5,23 @@
     import Overlay from "$lib/assets/Overlay.svelte";
     import OverlayBtn from "$lib/assets/OverlayBtn.svelte"
 
-    import { recipes } from "$lib/assets/shared.svelte";
+    import { recipes, showing_icons, adding_info, currently_showing } from "$lib/assets/shared.svelte";
 
     import { isOverlayOpen } from "$lib/assets/shared.svelte";
 
-    import { adding_info } from "$lib/assets/shared.svelte";
 
 </script>
 
-<div id="parent">
-
-    <header>
+<header>
         <input id="search_add_bar" type="text" bind:value={adding_info.name} placeholder="Vyhľadať">
 
         <OverlayBtn />
     </header>
+
+{#if showing_icons.value}
+<div id="icons_parent">
+
+    
 
     <div id="recipes">
         {#each recipes.info as recipe (recipe.id)}
@@ -32,6 +34,32 @@
     {/if}
 
 </div>
+{:else}
+    <div id="individual_recipe_parent">
+        <button onclick={() => showing_icons.value = true} id="arrow_back_button">←</button>
+
+        <div id="recipe_summary">
+            {#each currently_showing.value.ingredients as ingredient}
+                <div class="ingredient_info">
+                    <p>{ingredient[0]}</p>
+                    <p>-</p>
+                    <p>{ingredient[1]}</p>
+                </div>
+            {/each}
+        </div>
+
+        <div id="individual_recipe">
+            <img id="main_picture" src={currently_showing.value.image_url} alt="">
+
+            <div id="recipe_steps">
+                {#each currently_showing.value.description as paragraph}
+                    <h1>{paragraph[0]}</h1>
+                    <p>{paragraph[1]}</p>
+                {/each}
+            </div>
+        </div>
+    </div>
+{/if}   
 
 <style>
 
@@ -68,5 +96,62 @@
 
         font-size: large;
     }
+
+    
+
+    #individual_recipe_parent {
+        width: 100%;
+
+        display: flex;
+    }
+        #recipe_summary {
+            width: 10%;
+            height: inherit;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            
+            align-self: center;
+        }
+            .ingredient_info {
+                display: flex;
+                justify-content: space-around;
+
+                color: rgb(75, 75, 75);
+
+                font-size: small;
+            }
+
+        #main_picture {
+            width: inherit;
+
+            margin-top: 10px;
+
+            justify-self: flex-end;
+            float: right;
+        }
+
+        #arrow_back_button {
+            background-color: #ffffff;
+            border: 0px solid white;
+
+            font-size: x-large;
+
+            cursor: pointer;
+
+            align-self: flex-start;
+        }
+
+        #individual_recipe {
+            width: 89%;
+
+            justify-self: right;
+        }
+            #recipe_steps {
+                justify-self: center;
+                align-self: center;
+                float: center;
+            }
 
 </style>

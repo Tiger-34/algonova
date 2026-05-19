@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
 
-    import { recipes } from "./shared.svelte";
+    import { currently_showing, recipes, showing_icons } from "./shared.svelte";
 
     import { fade } from "svelte/transition";
     
@@ -21,7 +21,9 @@
     });
 </script>
 
-<div id="parent" transition:fade>
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div onclick={() => {showing_icons.value = false; currently_showing.value = recipes.info[self_inx];}} id="parent" transition:fade>
     <!-- Recipe image -->
     <div id="image_div"> 
         <img src={image_url} alt={name}>
@@ -84,6 +86,9 @@
 
         margin-top: 10px;
     }
+        #parent:hover {
+            background-color: #f3f3f3;
+        }
 
     #image_div {
         overflow: hidden;
