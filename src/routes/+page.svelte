@@ -52,8 +52,10 @@
             <img id="main_picture" src={currently_showing.value.image_url} alt="">
 
             <div id="recipe_steps">
+                <h1>{currently_showing.value.name}</h1>
+
                 {#each currently_showing.value.description as paragraph}
-                    <h1>{paragraph[0]}</h1>
+                    <h2>{paragraph[0]}</h2>
                     <p>{paragraph[1]}</p>
                 {/each}
             </div>
@@ -111,8 +113,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-            
-            align-self: center;
+
         }
             .ingredient_info {
                 display: flex;
