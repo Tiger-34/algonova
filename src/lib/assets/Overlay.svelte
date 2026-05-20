@@ -1,6 +1,6 @@
 <script>
     //@ts-nocheck
-    import { adding_info, isOverlayOpen, recipes } from "./shared.svelte";
+    import { currently_showing, isOverlayOpen, recipes } from "./shared.svelte";
 
     let current_ingredient = $state("");
 
@@ -14,6 +14,15 @@
     let current_heading = $state("");
     let current_paragraph = $state("");
     let current_description = $state([]);
+
+    function get_ids(arr) {
+        let result = [];
+        for (let i of arr) {
+            result.push(i.id)
+        };
+
+        return result
+    };
 </script>
 
 <div class="overlay">
@@ -28,32 +37,32 @@
         <div id="small_inputs">
             <div class="form-group">
                 <label for="recipe-name">Recipe Name</label>
-                <input id="recipe-name" type="text" bind:value={adding_info.new_recipe_info.name} placeholder="Názov receptu">
+                <input id="recipe-name" type="text" bind:value={currently_showing.value.name} placeholder="Názov receptu">
             </div>
 
             <div class="form-group">
                 <label for="cook-time">Čas prípravy (minúty)</label>
-                <input id="cook-time" type="number" bind:value={adding_info.new_recipe_info.cook_time}>
+                <input id="cook-time" type="number" bind:value={currently_showing.value.cook_time}>
             </div>
 
             <div class="form-group">
                 <!-- svelte-ignore a11y_no_static_element_interactions -->
                 <!-- svelte-ignore a11y_click_events_have_key_events -->
-                <label for="image-url">Ukážka (adresa obrázku) <span aria-label="Reset url" onclick={() => adding_info.new_recipe_info.image_url = ""} id="reset_url">✕</span></label>
-                <input style="field-sizing: content;" id="image-url" type="text" bind:value={adding_info.new_recipe_info.image_url} placeholder="https://...">
+                <label for="image-url">Ukážka (adresa obrázku) <span aria-label="Reset url" onclick={() => currently_showing.value.image_url = ""} id="reset_url">✕</span></label>
+                <input style="field-sizing: content;" id="image-url" type="text" bind:value={currently_showing.value.image_url} placeholder="https://...">
             </div>
 
-            <img id="image_preview" src={adding_info.new_recipe_info.image_url} alt="">
+            <img id="image_preview" src={currently_showing.value.image_url} alt="">
         </div>
 
         <div id="steps_adding">
-            {#each adding_info.new_recipe_info.description as step, inx}
+            {#each currently_showing.value.description as step, inx}
                 <input type="text" class="step_heading" placeholder={`Krok ${inx + 1}`} bind:value={step[0]}>
                 <textarea class="step_description" bind:value={step[1]}></textarea>
             {/each}
 
             <!-- svelte-ignore a11y_consider_explicit_label -->
-            <button id="add_step_btn" onclick={() => adding_info.new_recipe_info.description.push(["",""])}>
+            <button id="add_step_btn" onclick={() => currently_showing.value.description.push(["",""])}>
                 +
             </button>
         </div>
@@ -74,7 +83,7 @@
 
                 <button class="add-btn" onclick={() => {
                     if (current_ingredient && current_amount) {
-                        adding_info.new_recipe_info.ingredients.push([current_ingredient, `${current_amount}${current_amount_units}`]);
+                        currently_showing.value.ingredients.push([current_ingredient, `${current_amount}${current_amount_units}`]);
                         current_ingredient = '';
                         current_amount = 0;
                     }
@@ -82,32 +91,33 @@
             </div>
 
             <div class="ingredients-list">
-                {#each adding_info.new_recipe_info.ingredients as tempor_ingredient, index}
+                {#each currently_showing.value.ingredients as tempor_ingredient, index}
                     <div class="ingredient-item">
                         <span>{tempor_ingredient[0]} - {tempor_ingredient[1]}</span>
-                        <button class="delete-btn" onclick={() => adding_info.new_recipe_info.ingredients.splice(index, 1)}>✕</button>
+                        <button class="delete-btn" onclick={() => currently_showing.value.ingredients.splice(index, 1)}>✕</button>
                     </div>
                 {/each}
             </div>
         </div>
 
         <button class="submit-btn" onclick={() => {
-            console.log($state.snapshot(adding_info.new_recipe_info));
             //making array of the conditions
             let test_against = [];
-            for (let i in adding_info.new_recipe_info) {
-                if (adding_info.new_recipe_info[i].length != [] && Boolean(adding_info.new_recipe_info[i])) {
+            for (let i in currently_showing.value) {
+                if (currently_showing.value[`${i}`].length != [] && Boolean(currently_showing.value[`${i}`])) {
                     test_against.push(true)
-                } else test_against.push(false);
+                } else {test_against.push(false);};
             };
             //testing all values in it
-            if (test_against.reduce((total,curr) => (curr && total ? true : false), true)) {
+            if (test_against.reduce((total,curr) => (curr && total ? true : false), true) && !get_ids(recipes.info).includes(currently_showing.value.id) ) {
                 recipes.current_id += 1;
 
-                adding_info.new_recipe_info.id = recipes.current_id;
+                currently_showing.value.id = recipes.current_id;
                 
-                recipes.info.push(adding_info.new_recipe_info);
-            }   
+                recipes.info.push(currently_showing.value);
+            } else if (get_ids(recipes.info).includes(currently_showing.value.id && test_against.reduce((total,curr) => (curr && total ? true : false), true))) {
+                recipes.info[recipes.info.findIndex((el) => el.id == currently_showing.value.id)] = currently_showing
+            }
         }}>Uložiť</button>
     </div>
 </div>

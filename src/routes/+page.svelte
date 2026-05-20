@@ -5,7 +5,7 @@
     import Overlay from "$lib/assets/Overlay.svelte";
     import OverlayBtn from "$lib/assets/OverlayBtn.svelte"
 
-    import { recipes, showing_icons, adding_info, currently_showing } from "$lib/assets/shared.svelte";
+    import { recipes, showing_icons, currently_showing } from "$lib/assets/shared.svelte";
 
     import { isOverlayOpen } from "$lib/assets/shared.svelte";
 
@@ -13,9 +13,9 @@
 </script>
 
 <header>
-    <input id="search_add_bar" type="text" bind:value={adding_info.name} placeholder="Vyhľadať">
+        <input id="search_add_bar" type="text" bind:value={currently_showing.value.name} placeholder="Vyhľadať">
 
-    <OverlayBtn />
+        <OverlayBtn />
 </header>
 
 {#if showing_icons.value}
@@ -105,6 +105,8 @@
         width: 100%;
 
         display: flex;
+
+        user-select: none;
     }
         #recipe_summary {
             width: 10%;
