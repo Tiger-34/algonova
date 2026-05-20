@@ -13,10 +13,10 @@
 </script>
 
 <header>
-        <input id="search_add_bar" type="text" bind:value={adding_info.name} placeholder="Vyhľadať">
+    <input id="search_add_bar" type="text" bind:value={adding_info.name} placeholder="Vyhľadať">
 
-        <OverlayBtn />
-    </header>
+    <OverlayBtn />
+</header>
 
 {#if showing_icons.value}
 <div id="icons_parent">

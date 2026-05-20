@@ -72,7 +72,7 @@ export let recipes = $state({info: [
         image_url: "https://picsum.photos/id/1084/400/300"
     }
 ],
-current_id: 0,
+current_id: 5,
 ids_arr: [0,1,2,3,4,5]});
 
 export let isOverlayOpen = $state({value: true});
@@ -81,7 +81,7 @@ export let adding_info = $state({
     new_recipe_info: {
         id: recipes.current_id,
         name: "",
-        long_description: [],
+        description: [],
         ingredients: [],
         cook_time: 0,
         image_url: ""
