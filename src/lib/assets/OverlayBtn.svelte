@@ -5,7 +5,7 @@
 <button 
     aria-label="Add new recipe"
     title="Add new recipe"
-    onclick={() => {isOverlayOpen.value = !isOverlayOpen.value}}
+    on:click={() => {isOverlayOpen.value = !isOverlayOpen.value}}
     class:open={isOverlayOpen.value}
 >
     +
