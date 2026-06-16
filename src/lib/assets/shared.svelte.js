@@ -1,24 +1,4 @@
-// @ts-nocheck
-export class Recipe {
-    id = $state();
-    name = $state("");
-
-    description = $state([]);
-
-    ingredients = $state([]);
-    cook_time = $state(0);
-
-    image_url = $state("");
-
-    constructor(n, d, arr, t, img) {
-        this.id = recipes.info.length;
-        this.name = n;
-        this.description = d;
-        this.ingredients = arr;
-        this.cook_time = t;
-        this.image_url = img;
-    }
-}
+//@ts-nocheck
 
 export function createRecipe(n, d, arr, t, img) {
     recipes.info.push(
