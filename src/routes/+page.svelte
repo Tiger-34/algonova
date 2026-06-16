@@ -7,7 +7,7 @@
 
     import { recipes, showing_icons, currently_showing } from "$lib/assets/shared.svelte";
 
-    import { isOverlayOpen } from "$lib/assets/shared.svelte";
+    import { isOverlayOpen } from "$lib/assets/shared.svelte";  
 
 
 </script>

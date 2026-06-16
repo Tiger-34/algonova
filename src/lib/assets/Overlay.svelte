@@ -117,7 +117,9 @@
                 recipes.info.push(currently_showing.value);
             } else if (get_ids(recipes.info).includes(currently_showing.value.id && test_against.reduce((total,curr) => (curr && total ? true : false), true))) {
                 recipes.info[recipes.info.findIndex((el) => el.id == currently_showing.value.id)] = currently_showing
-            }
+            };
+
+            document.cookie = `recipes=${JSON.stringify(recipes.info)}`;
         }}>Uložiť</button>
     </div>
 </div>
